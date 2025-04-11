@@ -1,0 +1,91 @@
+@import 'src/constants/colors.scss';
+
+.container {
+  height: 65px;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.input {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 16px 16px 16px 60px;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+
+  border: none;
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.003);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:focus {
+    box-shadow: 0 0 2px 2px $focus-box-shadow;
+    outline: 0;
+  }
+}
+
+.input::-webkit-input-placeholder {
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.input::-moz-placeholder {
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.input::input-placeholder {
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.toggle {
+  position: absolute;
+
+  .toggleInput {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+
+    &:checked + .toggleLabel:before {
+      color: #484848;
+    }
+
+    &:focus + .toggleLabel {
+      box-shadow: 0 0 2px 2px $focus-box-shadow;
+      outline: 0;
+    }
+  }
+
+  .toggleLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 65px;
+    font-size: 0;
+    position: absolute;
+
+    &:before {
+      content: '❯';
+      display: inline-block;
+      font-size: 22px;
+      color: #949494;
+      padding: 10px 27px 10px 27px;
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+  }
+}

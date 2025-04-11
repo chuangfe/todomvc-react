@@ -1,0 +1,17 @@
+@import 'src/constants/colors.scss';
+
+.container {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 80px;
+  font-weight: 200;
+  text-align: center;
+  color: $title-color;
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+}

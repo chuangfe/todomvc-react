@@ -15,7 +15,7 @@ configure({
   enforceActions: 'always'
 })
 
-import './index.css'
+import './main.scss'
 import 'normalize.css'
 
 import PagesRoot from '@src/pages'
