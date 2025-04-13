@@ -1,35 +1,55 @@
+import { observer } from 'mobx-react';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
+import TodoItemViewModel from './viewModel';
 
 interface Props {
-  completed: Boolean;
-  editing: Boolean;
+  vm: TodoItemViewModel;
+  onDelete: (id: string) => void;
 }
 
 function TodoItem(props: Props) {
-  const { completed, editing } = props;
-
   return (
     <div
       className={clsx([
         styles.container,
-        completed && styles.completed,
-        editing && styles.editing
+        props.vm.completed && styles.completed,
+        props.vm.editing && styles.editing
       ])}
     >
-      <div className={styles.view}>
-        <input className={styles.toggle} id="todoItemToggle" type="checkbox" />
+      <div className={styles.view} onDoubleClick={props.vm.onEdit}>
+        <input
+          className={styles.toggle}
+          id="todoItemToggle"
+          type="checkbox"
+          checked={props.vm.completed}
+          onChange={(e) => props.vm.onCompletedChange(e.target.checked)}
+        />
 
-        <label className={styles.toggleLabel} htmlFor="todoItemToggle">
-          Buy a unicorn
-        </label>
+        <div className={styles.label}>
+          {props.vm.contnet}
+        </div>
 
-        <button className={styles.destroy}></button>
+        <button
+          className={styles.destroy}
+          onClick={() => props.onDelete(props.vm.id)}
+        ></button>
       </div>
 
-      <input className={styles.edit} value="Rule the web" />
+      <input
+        autoFocus
+        className={styles.edit}
+        value={props.vm.interimContent}
+        onChange={(e) => props.vm.onInterimContentChange(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.code === 'Enter') {
+            props.vm.onEdited();
+          }
+        }}
+        onBlur={props.vm.onEdited}
+      />
     </div>
   );
 }
 
-export default TodoItem;
+export default observer(TodoItem);

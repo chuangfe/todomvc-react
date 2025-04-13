@@ -1,41 +1,55 @@
-import { Observer } from 'mobx-react';
-import useDidMount from '@src/hooks/useDidMount';
-import TodoStore from '@src/stores/todo';
+import { observer } from 'mobx-react';
 import TodoHader from './components/TodoHader';
 import TodoInput from './components/TodoInput';
 import TodoItem from './components/TodoItem';
 import TodoFooter from './components/TodoFooter';
 import TodoInfo from './components/TodoInfo';
+import TodoPageViewModel from './viewModel';
 import styles from './styles.module.scss';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const TodoPage = () => {
-  console.log('# TodoPage.render');
+function TodoPage() {
+  const vm = TodoPageViewModel();
 
-  useDidMount(() => {
-    console.log('[TodoPage] useDidMount');
-  });
+  const location = useLocation();
+
+  useEffect(() => {
+    vm.onFilterChange(location.hash);
+  }, [location]);
 
   return (
     <div className={styles.container}>
       <TodoHader />
 
       <div className={styles.mainContent}>
-        <TodoInput />
+        <TodoInput
+          toggle={vm.checks.todoToggles}
+          onInputEnter={(v: string) => vm.onTodoCreate(v)}
+          onToggleCheckedChange={(v: boolean) => vm.onTodoCompletedsChange(v)}
+        />
 
         <ul className={styles.todoList}>
           <li className={styles.todoLi}>
-            <TodoItem completed={false} editing={false} />
-            <TodoItem completed={true} editing={false} />
-            <TodoItem completed={false} editing={true} />
+            {vm.todos.map((todo) => (
+              <TodoItem key={todo.id} vm={todo} onDelete={vm.onTodoDelete} />
+            ))}
           </li>
         </ul>
 
-        <TodoFooter />
+        {vm.checks.todos && (
+          <TodoFooter
+            todoCount={vm.labels.unCompleted}
+            filter={vm.filter}
+            clearCompleted={vm.checks.completed}
+            onCompletedDelete={vm.onTodoCompletedsDelete}
+          />
+        )}
       </div>
 
       <TodoInfo />
     </div>
   );
-};
+}
 
-export default TodoPage;
+export default observer(TodoPage);

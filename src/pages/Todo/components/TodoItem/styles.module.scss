@@ -1,6 +1,8 @@
 @import 'src/constants/colors.scss';
 
 .container {
+  width: 100%;
+  height: 60px;
   position: relative;
   font-size: 24px;
 
@@ -9,16 +11,7 @@
     padding: 0;
 
     .edit {
-      margin: 0px;
-      padding: 12px 16px 12px 60px;
-      width: 100%;
-      border: none;
       display: block;
-
-      &:focus {
-        box-shadow: 0 0 2px 2px $focus-box-shadow;
-        outline: 0;
-      }
     }
 
     .view {
@@ -27,7 +20,7 @@
   }
 
   &.completed {
-    .toggleLabel {
+    .label {
       color: #949494;
       text-decoration: line-through;
     }
@@ -38,6 +31,11 @@
       display: block;
     }
   }
+}
+
+.view {
+  width: 100%;
+  height: 100%;
 }
 
 .toggle {
@@ -59,16 +57,16 @@
   -webkit-appearance: none;
   appearance: none;
 
-  &:checked + .toggleLabel {
+  &:checked + .label {
     background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%2359A193%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20fill%3D%22%233EA390%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22%2F%3E%3C%2Fsvg%3E');
   }
 }
 
-.toggleLabel {
+.label {
   overflow-wrap: break-word;
-  padding: 15px 15px 15px 60px;
+  padding: 0px 15px 0px 60px;
   display: block;
-  line-height: 1.2;
+  line-height: 60px;
   transition: color 0.4s;
   font-weight: 400;
   color: #484848;
@@ -110,5 +108,15 @@
 }
 
 .edit {
+  margin: 0px;
+  padding: 0px 16px 0px 60px;
+  width: 100%;
+  height: 100%;
   display: none;
+  border: none;
+
+  &:focus {
+    box-shadow: 0 0 2px 2px $focus-box-shadow;
+    outline: 0;
+  }
 }

@@ -10,10 +10,6 @@ function TodoInfo() {
         Template by <a className={styles.link} href="http://sindresorhus.com">Sindre Sorhus</a>
       </p>
 
-      <p className={styles.item}> 
-        Created by <a className={styles.link} href="http://todomvc.com">you</a>
-      </p>
-
       <p className={styles.item}>
         Part of <a className={styles.link} href="http://todomvc.com">TodoMVC</a>
       </p>
