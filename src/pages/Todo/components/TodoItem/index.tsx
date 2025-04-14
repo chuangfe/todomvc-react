@@ -17,37 +17,37 @@ function TodoItem(props: Props) {
         props.vm.editing && styles.editing
       ])}
     >
-      <div className={styles.view} onDoubleClick={props.vm.onEdit}>
+      {props.vm.editing ? (
         <input
-          className={styles.toggle}
-          id="todoItemToggle"
-          type="checkbox"
-          checked={props.vm.completed}
-          onChange={(e) => props.vm.onCompletedChange(e.target.checked)}
+          className={styles.edit}
+          autoFocus
+          value={props.vm.interimContent}
+          onChange={(e) => props.vm.onInterimContentChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.code === 'Enter') {
+              props.vm.onEdited();
+            }
+          }}
+          onBlur={props.vm.onEdited}
         />
+      ) : (
+        <div className={styles.view} onDoubleClick={props.vm.onEdit}>
+          <input
+            className={styles.toggle}
+            id="todoItemToggle"
+            type="checkbox"
+            checked={props.vm.completed}
+            onChange={(e) => props.vm.onCompletedChange(e.target.checked)}
+          />
 
-        <div className={styles.label}>
-          {props.vm.contnet}
+          <div className={styles.label}>{props.vm.contnet}</div>
+
+          <button
+            className={styles.destroy}
+            onClick={() => props.onDelete(props.vm.id)}
+          ></button>
         </div>
-
-        <button
-          className={styles.destroy}
-          onClick={() => props.onDelete(props.vm.id)}
-        ></button>
-      </div>
-
-      <input
-        autoFocus
-        className={styles.edit}
-        value={props.vm.interimContent}
-        onChange={(e) => props.vm.onInterimContentChange(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.code === 'Enter') {
-            props.vm.onEdited();
-          }
-        }}
-        onBlur={props.vm.onEdited}
-      />
+      )}
     </div>
   );
 }
