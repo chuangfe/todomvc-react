@@ -1,11 +1,6 @@
 # React TS
 
-### 功能
-- [vite](https://vitejs.dev/)
-- [swc](https://swc.rs/)
-- [mobx](https://mobx.js.org/)
-- [i18next](https://www.i18next.com/)
-- [react-router-dom](https://reactrouter.com/en/main)
+- [Demo](https://chuangfe.github.io/todomvc-react/dist/)
 
 ### 指令
 ```sh
@@ -38,7 +33,3 @@ yarn run build
   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
 }
 ```
-
-### 其他
-
-- [i18n](https://docs.google.com/spreadsheets/d/1tcJ59-gw_f9toWtMKe9MnG_hBtDHl7KpnQbKKWnIDBo)
