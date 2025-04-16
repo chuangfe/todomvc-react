@@ -6,7 +6,7 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig((config) => {
 
   return {
-    base: '/',
+    base: '/todomvc-react/dist/',
     publicDir: 'public',
     plugins: [
       svgr(),
