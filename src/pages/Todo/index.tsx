@@ -1,13 +1,15 @@
 import { observer } from 'mobx-react';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import TodoHader from './components/TodoHader';
 import TodoInput from './components/TodoInput';
+import TodoToggleAll from './components/TodoToggleAll';
 import TodoItem from './components/TodoItem';
 import TodoFooter from './components/TodoFooter';
 import TodoInfo from './components/TodoInfo';
+
 import TodoPageViewModel from './viewModel';
 import styles from './styles.module.scss';
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 
 function TodoPage() {
   const vm = TodoPageViewModel();
@@ -23,11 +25,18 @@ function TodoPage() {
       <TodoHader />
 
       <div className={styles.mainContent}>
-        <TodoInput
-          toggle={vm.checks.todoToggles}
-          onInputEnter={(v: string) => vm.onTodoCreate(v)}
-          onToggleCheckedChange={(v: boolean) => vm.onTodoCompletedsChange(v)}
-        />
+        <div className={styles.actionsContainer}>
+          {vm.checks.toggleAll && (
+            <div className={styles.toggleAll}>
+              <TodoToggleAll
+                toggle={vm.toggleAll}
+                onToggleAllCheckedChange={(v) => vm.onTodoCompletedsChange(v)}
+              />
+            </div>
+          )}
+
+          <TodoInput onInputEnter={(v: string) => vm.onTodoCreate(v)} />
+        </div>
 
         <ul className={styles.todoList}>
           <li className={styles.todoLi}>

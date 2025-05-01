@@ -26,6 +26,17 @@
   position: relative;
 }
 
+.actionsContainer {
+  width: 100%;
+  height: 65px;
+  position: relative;
+  z-index: 1;
+
+  .toggleAll {
+    position: absolute;
+  }
+}
+
 .todoList {
   margin: 0;
   padding: 0;

@@ -8,6 +8,8 @@ import { useLocation } from 'react-router-dom';
 function TodoPageViewModel() {
   const state = useLocalObservable(() => ({
     todos: [] as TodoItemViewModel[],
+    
+    toggleAll: false,
 
     filter: TODO_FILTERS.all.value,
 
@@ -15,7 +17,7 @@ function TodoPageViewModel() {
       return {
         todos: !!this.todos.length,
         completed: !!this.todos.filter((item) => item.completed).length,
-        todoToggles: !!this.todos.length
+        toggleAll: !!this.todos.length
       };
     },
 
@@ -50,8 +52,10 @@ function TodoPageViewModel() {
   );
 
   const onTodoCompletedsChange = useCallback(
-    (v: boolean) =>
-      state.todos.forEach((todo) => todo.onCompletedChange((v = v))),
+    (v: boolean) => {
+      state.toggleAll = v;
+      state.todos.forEach((todo) => todo.onCompletedChange((v = v)));
+    },
     [state]
   );
 
@@ -87,6 +91,7 @@ function TodoPageViewModel() {
 
   return {
     todos: state.labels.todos,
+    toggleAll: state.toggleAll,
     filter: state.filter,
     checks: state.checks,
     labels: state.labels,
