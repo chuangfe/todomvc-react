@@ -1,16 +1,19 @@
 const TODO_FILTERS = {
   all: {
     value: '',
-    label: 'All'
+    label: 'All',
+    testId: 'filter-all'
   },
   active: {
     value: 'active',
     label: 'Active',
+    testId: 'filter-active'
   },
   completed: {
     value: 'completed',
-    label: 'Completed'
+    label: 'Completed',
+    testId: 'filter-completed'
   }
 };
 
-export default TODO_FILTERS
+export default TODO_FILTERS;

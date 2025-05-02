@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
 import svgr from 'vite-plugin-svgr'
+import { configDefaults } from 'vitest/config'
 
 // https://vitejs.dev/config/
 export default defineConfig((config) => {
@@ -39,6 +40,12 @@ export default defineConfig((config) => {
        */
       drop: ['debugger'],
       pure: config.mode === 'production' ? ['console.log', 'console.debug'] : []
+    },
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './src/setupTests.ts',
+      exclude: [...configDefaults.exclude, 'e2e/**']
     }
   }
 })

@@ -13,14 +13,15 @@ interface Props {
 
 function TodoFooter(props: Props) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="todo-footer">
       <div className={styles.flex}>
-        <span className={styles.todoCount}>
+        <span className={styles.todoCount} data-testid="todo-count">
           <strong>{props.todoCount}</strong> item left
         </span>
 
         {props.clearCompleted && (
           <button
+            data-testid="clear-completed-button"
             className={styles.clearCompleted}
             onClick={props.onCompletedDelete}
           >
@@ -40,6 +41,7 @@ function TodoFooter(props: Props) {
                   styles.filterContent,
                   item.value === props.filter && styles.selected
                 ])}
+                data-testid={item.testId}
                 href={href}
               >
                 {item.label}

@@ -18,10 +18,12 @@ function TodoInput(props: Props) {
       value={vm.todo}
       onChange={(e) => vm.onTodoChange(e.target.value)}
       onKeyDown={(e) => {
-        if (e.code === 'Enter') {
+        if (e.code === 'Enter' || e.code === 'NumpadEnter') {
           props.onInputEnter(vm.todo);
           vm.onTodoClear();
         }
+
+        console.log(e.code, e.key)
       }}
       onBlur={vm.onTodoClear}
     />
