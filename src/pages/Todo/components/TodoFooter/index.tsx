@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import clsx from 'clsx';
 import TODO_FILTERS from '../../models/filters';
 import styles from './styles.module.scss';
@@ -12,6 +13,8 @@ interface Props {
 }
 
 function TodoFooter(props: Props) {
+  console.log('TodoFooter', 'render');
+
   return (
     <div className={styles.container} data-testid="todo-footer">
       <div className={styles.flex}>
@@ -54,4 +57,4 @@ function TodoFooter(props: Props) {
   );
 }
 
-export default TodoFooter;
+export default observer(TodoFooter);
