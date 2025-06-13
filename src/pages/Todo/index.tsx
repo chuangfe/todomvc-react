@@ -13,7 +13,6 @@ import styles from './styles.module.scss';
 
 function TodoPage() {
   const vm = TodoPageViewModel();
-
   const location = useLocation();
 
   useEffect(() => {

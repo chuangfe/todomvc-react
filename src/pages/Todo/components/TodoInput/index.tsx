@@ -23,7 +23,7 @@ function TodoInput(props: Props) {
           vm.onTodoClear();
         }
 
-        console.log(e.code, e.key)
+        console.log(e.code, e.key);
       }}
       onBlur={vm.onTodoClear}
     />

@@ -1,14 +1,13 @@
-import { useCallback } from 'react';
 import { useLocalObservable } from 'mobx-react';
 import useMobxAction from '@src/hooks/useMobxAction';
+import useMobxReaction from '@src/hooks/useMobxReaction';
 import TODO_FILTERS from './models/filters';
 import TodoItemViewModel from './components/TodoItem/viewModel';
-import { useLocation } from 'react-router-dom';
 
 function TodoPageViewModel() {
   const state = useLocalObservable(() => ({
     todos: [] as TodoItemViewModel[],
-    
+
     toggleAll: false,
 
     filter: TODO_FILTERS.all.value,
@@ -87,6 +86,13 @@ function TodoPageViewModel() {
       }
     },
     [state]
+  );
+
+  useMobxReaction(
+    () => state.todos.length,
+    (value, prev) => {
+      console.log(`Todos length changed from ${prev} to ${value}`);
+    }
   );
 
   return {
