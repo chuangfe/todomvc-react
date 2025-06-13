@@ -30,12 +30,12 @@ function TodoPage() {
             <div className={styles.toggleAll}>
               <TodoToggleAll
                 toggle={vm.toggleAll}
-                onToggleAllCheckedChange={(v) => vm.onTodoCompletedsChange(v)}
+                onToggleAllCheckedChange={vm.onTodoCompletedsChange}
               />
             </div>
           )}
 
-          <TodoInput onInputEnter={(v: string) => vm.onTodoCreate(v)} />
+          <TodoInput onInputEnter={vm.onTodoCreate} />
         </div>
 
         <ul className={styles.todoList}>
