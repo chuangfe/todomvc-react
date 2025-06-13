@@ -1,20 +1,20 @@
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { fixupPluginRules } from '@eslint/compat'
-import { FlatCompat } from '@eslint/eslintrc'
-import eslint from '@eslint/js'
-import stylistic from '@stylistic/eslint-plugin'
-import tseParser from '@typescript-eslint/parser'
-import esImport from 'eslint-plugin-import'
-import perfectionist from 'eslint-plugin-perfectionist'
-import prettier from 'eslint-plugin-prettier'
-import tseslint from 'typescript-eslint'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import globals from 'globals'
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { fixupPluginRules } from '@eslint/compat';
+import { FlatCompat } from '@eslint/eslintrc';
+import eslint from '@eslint/js';
+import stylistic from '@stylistic/eslint-plugin';
+import tseParser from '@typescript-eslint/parser';
+import esImport from 'eslint-plugin-import';
+import perfectionist from 'eslint-plugin-perfectionist';
+import prettier from 'eslint-plugin-prettier';
+import tseslint from 'typescript-eslint';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import globals from 'globals';
 
-const project = ['./tsconfig.json', './tsconfig.node.json']
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const project = ['./tsconfig.json', './tsconfig.node.json'];
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * for backward compatibility
@@ -23,8 +23,8 @@ const __dirname = path.dirname(__filename)
  */
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: eslint.configs.recommended,
-})
+  recommendedConfig: eslint.configs.recommended
+});
 
 /**
  * @param {string} name the pugin name
@@ -119,10 +119,13 @@ export default [
       'no-var': 'warn',
       'prefer-arrow-callback': 'off',
       'prefer-destructuring': 'off',
-      'no-param-reassign': ['error', {
-        props: true,
-        ignorePropertyModificationsForRegex: ['^draft']
-      }]
+      'no-param-reassign': [
+        'error',
+        {
+          props: true,
+          ignorePropertyModificationsForRegex: ['^draft']
+        }
+      ]
     }
   },
   {
@@ -141,7 +144,10 @@ export default [
       'import/extensions': ['error', 'always', { ignorePackages: true }],
       'import/no-absolute-path': 'off',
       'import/no-extraneous-dependencies': 'off',
-      'import/no-unresolved': ['error', { caseSensitive: true, ignore: ['\\.svg\\?react$'] }],
+      'import/no-unresolved': [
+        'error',
+        { caseSensitive: true, ignore: ['\\.svg\\?react$'] }
+      ],
       'import/prefer-default-export': 'off'
     }
   },
@@ -157,7 +163,10 @@ export default [
       '@stylistic/indent-binary-ops': 'off',
       '@stylistic/implicit-arrow-linebreak': 'off',
       '@stylistic/lines-between-class-members': 'off',
-      '@stylistic/object-curly-newline': ['error', { multiline: true, consistent: true }],
+      '@stylistic/object-curly-newline': [
+        'error',
+        { multiline: true, consistent: true }
+      ],
       '@stylistic/operator-linebreak': ['error', 'before'],
       '@stylistic/max-len': 'off',
       '@stylistic/max-statements-per-line': 'off',
@@ -173,7 +182,7 @@ export default [
           allowTemplateLiterals: true
         }
       ],
-      '@stylistic/semi': ['error', 'never']
+      '@stylistic/semi': ['always']
     }
   },
   {
@@ -219,17 +228,17 @@ export default [
       'perfectionist/sort-union-types': [
         'error',
         {
-          'type': 'natural',
-          'order': 'asc',
+          type: 'natural',
+          order: 'asc',
           'nullable-last': true
         }
       ],
       'perfectionist/sort-imports': [
         'error',
         {
-          'type': 'natural',
-          'order': 'asc',
-          'groups': [
+          type: 'natural',
+          order: 'asc',
+          groups: [
             'type',
             'react',
             ['builtin', 'external'],
@@ -247,13 +256,11 @@ export default [
               react: ['react', 'react-*']
             },
             type: {
-              react: 'react',
+              react: 'react'
             }
           },
           'newlines-between': 'always',
-          'internal-pattern': [
-            '@src/**'
-          ]
+          'internal-pattern': ['@src/**']
         }
       ]
     }
@@ -265,7 +272,7 @@ export default [
     rules: {
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true },
+        { allowConstantExport: true }
       ]
     }
   },
@@ -280,10 +287,17 @@ export default [
       'react/self-closing-comp': 'warn',
       'react/static-property-placement': 'off',
       'react/prefer-stateless-function': 'off',
-      'react/function-component-definition': [1, {
-        namedComponents: ['function-declaration', 'function-expression', 'arrow-function'],
-        unnamedComponents: ['function-expression', 'arrow-function']
-      }],
+      'react/function-component-definition': [
+        1,
+        {
+          namedComponents: [
+            'function-declaration',
+            'function-expression',
+            'arrow-function'
+          ],
+          unnamedComponents: ['function-expression', 'arrow-function']
+        }
+      ],
       'react/sort-comp': 'off',
       'react/no-unused-prop-types': 'warn',
       'react/jsx-filename-extension': ['warn', { extensions: ['.ts', '.tsx'] }],
@@ -294,7 +308,7 @@ export default [
 
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true },
+        { allowConstantExport: true }
       ]
     }
   },
@@ -311,8 +325,6 @@ export default [
     plugins: {
       html: legacyPlugin('eslint-plugin-html', 'html')
     },
-    rules: {
-
-    }
+    rules: {}
   }
-]
+];

@@ -7,5 +7,6 @@ module.exports = {
   useTabs: false,
   jsxSingleQuote: false,
   arrowParens: 'always',
-  endOfLine: 'lf'
-}
+  endOfLine: 'lf',
+  semi: true
+};

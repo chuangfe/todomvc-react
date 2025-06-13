@@ -59,6 +59,7 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "jsdom": "^26.1.0",
     "papaparse": "^5.4.1",
+    "prettier": "3.5.3",
     "typed-css-modules": "^0.9.1",
     "typed-scss-modules": "^8.0.1",
     "typescript": "^5.5.2",
