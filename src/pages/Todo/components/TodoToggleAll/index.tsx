@@ -1,3 +1,4 @@
+import React from 'react';
 import { observer } from 'mobx-react';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
@@ -8,6 +9,8 @@ interface Props {
 }
 
 function TodoToggleAll(props: Props) {
+  console.log('TodoToggleAll', 'render');
+
   return (
     <>
       <input
@@ -15,11 +18,9 @@ function TodoToggleAll(props: Props) {
         className={styles.toggleInput}
         type="checkbox"
         checked={props.toggle}
-        onChange={(e) => {
-          props.onToggleAllCheckedChange(e.target.checked);
-        }}
+        onChange={(e) => props.onToggleAllCheckedChange(e.target.checked)}
       />
-      
+
       <label className={styles.toggleLabel} htmlFor="toggle-all">
         Mark all as complete
       </label>
