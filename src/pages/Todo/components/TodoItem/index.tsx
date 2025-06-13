@@ -45,7 +45,7 @@ function TodoItem(props: Props) {
           <button
             className={styles.destroy}
             onClick={() => props.onDelete(props.vm.id)}
-          ></button>
+          />
         </div>
       )}
     </div>
