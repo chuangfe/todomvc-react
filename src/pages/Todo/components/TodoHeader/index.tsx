@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react';
 import styles from './styles.module.scss';
 
-function TodoHader() {
-  console.log('TodoHader', 'render');
+function TodoHeader() {
+  console.log('TodoHeader', 'render');
 
   return (
     <div className={styles.container}>
@@ -11,4 +11,4 @@ function TodoHader() {
   );
 }
 
-export default observer(TodoHader);
+export default observer(TodoHeader);

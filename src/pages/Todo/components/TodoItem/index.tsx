@@ -40,7 +40,7 @@ function TodoItem(props: Props) {
             onChange={(e) => props.vm.onCompletedChange(e.target.checked)}
           />
 
-          <div className={styles.label}>{props.vm.contnet}</div>
+          <div className={styles.label}>{props.vm.content}</div>
 
           <button
             className={styles.destroy}

@@ -7,13 +7,13 @@ interface TodoItemViewModelProps {
 
 class TodoItemViewModel {
   id = uuidv4();
-  @observable contnet = '';
+  @observable content = '';
   @observable interimContent = '';
   @observable completed = false;
   @observable editing = false;
 
   constructor(props: TodoItemViewModelProps) {
-    this.contnet = props.content;
+    this.content = props.content;
     this.interimContent = props.content;
     makeObservable(this);
   }
@@ -34,9 +34,9 @@ class TodoItemViewModel {
     const newContent = this.interimContent.trim();
 
     if (!!newContent) {
-      this.contnet = newContent;
+      this.content = newContent;
     } else {
-      this.interimContent = this.contnet;
+      this.interimContent = this.content;
     }
 
     this.editing = false;

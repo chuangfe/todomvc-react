@@ -53,7 +53,7 @@ function TodoPageViewModel() {
   const onTodoCompletedsChange = useMobxAction(
     (v: boolean) => {
       state.toggleAll = v;
-      state.todos.forEach((todo) => todo.onCompletedChange((v = v)));
+      state.todos.forEach((todo) => todo.onCompletedChange((v)));
     },
     [state]
   );

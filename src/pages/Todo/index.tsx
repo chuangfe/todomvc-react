@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import TodoHader from './components/TodoHader';
+import TodoHeader from './components/TodoHeader';
 import TodoInput from './components/TodoInput';
 import TodoToggleAll from './components/TodoToggleAll';
 import TodoItem from './components/TodoItem';
@@ -21,7 +21,7 @@ function TodoPage() {
 
   return (
     <div className={styles.container}>
-      <TodoHader />
+      <TodoHeader />
 
       <div className={styles.mainContent}>
         <div className={styles.actionsContainer}>
