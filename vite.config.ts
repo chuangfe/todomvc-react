@@ -7,7 +7,7 @@ import { configDefaults } from 'vitest/config'
 export default defineConfig((config) => {
 
   return {
-    base: '/todomvc-react/dist/',
+    base: '',
     publicDir: 'public',
     plugins: [
       svgr(),
